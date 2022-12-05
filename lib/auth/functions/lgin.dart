@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 
-void _signIn(String id, String pass) async {
+void login(String id, String pass) async {
   try {
     /// credential にはアカウント情報が記録される
     final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
