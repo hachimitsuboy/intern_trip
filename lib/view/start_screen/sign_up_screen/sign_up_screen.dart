@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:intern_trip/auth/functions/create_account.dart';
 import 'package:intern_trip/view/common_widgets/common_button.dart';
-import 'package:intern_trip/view/sign_up_screen/children/sign_up_text_form_field.dart';
+import 'package:intern_trip/view/start_screen/sign_up_screen/children/sign_up_text_form_field.dart';
 import 'package:lottie/lottie.dart';
 
 class SignUpScreen extends StatelessWidget {
-  const SignUpScreen({Key? key}) : super(key: key);
+  SignUpScreen({Key? key}) : super(key: key);
+  // buildメソッドで定義すると、入力内容が消える
+  final TextEditingController _idController = TextEditingController();
+  final TextEditingController _passController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    TextEditingController _idController = TextEditingController();
-    TextEditingController _passController = TextEditingController();
 
     return Scaffold(
       body: SafeArea(
@@ -37,11 +39,24 @@ class SignUpScreen extends StatelessWidget {
                   child: Lottie.asset('assets/images/sign_up_image.json'),
                 ),
               ),
-              SignUpTextFormField(title: 'メールアドレス', controller: _idController),
+              SignUpTextFormField(
+                title: 'メールアドレス',
+                controller: _idController,
+              ),
+
               const SizedBox(height: 30),
-              SignUpTextFormField(title: 'パスワード', controller: _passController),
+              SignUpTextFormField(
+                title: 'パスワード',
+                controller: _passController,
+                obscure: true,
+              ),
               const SizedBox(height: 50),
-              CommonButton(title: '送信', onPush: () => debugPrint('送信')),
+              CommonButton(
+                  title: '送信',
+                  onPush: () => createAccount(
+                        _idController.text,
+                        _passController.text,
+                      )),
             ],
           ),
         ),

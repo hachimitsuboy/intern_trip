@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:intern_trip/view/login_screen/login_screen.dart';
+import 'package:intern_trip/view/start_screen/start_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: LoginScreen(),
+      home: StartScreen(),
     );
   }
 }

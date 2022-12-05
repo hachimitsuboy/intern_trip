@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:intern_trip/view/sign_up_screen/sign_up_screen.dart';
+import 'package:intern_trip/view/start_screen/sign_up_screen/sign_up_screen.dart';
 import 'package:lottie/lottie.dart';
 
-class LoginScreen extends StatelessWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+class StartScreen extends StatelessWidget {
+  const StartScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
