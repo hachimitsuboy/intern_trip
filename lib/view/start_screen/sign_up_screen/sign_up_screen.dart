@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intern_trip/auth/functions/create_account.dart';
 import 'package:intern_trip/view/common_widgets/common_button.dart';
-import 'package:intern_trip/view/start_screen/sign_up_screen/children/sign_up_text_form_field.dart';
+import 'package:intern_trip/view/start_screen/children/auth_text_form_field.dart';
 import 'package:lottie/lottie.dart';
 
 class SignUpScreen extends StatelessWidget {
@@ -39,20 +39,20 @@ class SignUpScreen extends StatelessWidget {
                   child: Lottie.asset('assets/images/sign_up_image.json'),
                 ),
               ),
-              SignUpTextFormField(
+              authTextFormField(
                 title: 'メールアドレス',
                 controller: _idController,
               ),
 
               const SizedBox(height: 30),
-              SignUpTextFormField(
+              authTextFormField(
                 title: 'パスワード',
                 controller: _passController,
                 obscure: true,
               ),
               const SizedBox(height: 50),
               CommonButton(
-                  title: '送信',
+                  title: '登録',
                   onPush: () => createAccount(
                         _idController.text,
                         _passController.text,
