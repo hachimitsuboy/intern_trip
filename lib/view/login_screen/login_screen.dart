@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intern_trip/view/sign_up_screen/sign_up_screen.dart';
 import 'package:lottie/lottie.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -23,7 +24,14 @@ class LoginScreen extends StatelessWidget {
               SizedBox(
                 width: MediaQuery.of(context).size.width * 0.7,
                 child: ElevatedButton(
-                  onPressed: () => debugPrint("新規登録ボタン押された"),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => SignUpScreen(),
+                      ),
+                    );
+                  },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.redAccent,
                   ),
@@ -43,7 +51,7 @@ class LoginScreen extends StatelessWidget {
                     child: Text('ログイン'),
                   ),
                 ),
-              )
+              ),
             ],
           ),
         ],
