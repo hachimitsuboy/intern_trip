@@ -3,10 +3,12 @@ import 'package:flutter/material.dart';
 class SignUpTextFormField extends StatelessWidget {
   String title;
   TextEditingController controller;
+  bool? obscure;
 
   SignUpTextFormField({
     required this.title,
     required this.controller,
+    this.obscure
   });
 
   @override
@@ -23,7 +25,7 @@ class SignUpTextFormField extends StatelessWidget {
               const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
         ),
         controller: controller,
-        obscureText: true,
+        obscureText: obscure ?? false,
       ),
     );
   }
