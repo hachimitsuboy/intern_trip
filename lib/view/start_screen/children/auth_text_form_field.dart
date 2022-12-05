@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class SignUpTextFormField extends StatelessWidget {
+class authTextFormField extends StatelessWidget {
   String title;
   TextEditingController controller;
   bool? obscure;
 
-  SignUpTextFormField({
+  authTextFormField({
     required this.title,
     required this.controller,
     this.obscure
