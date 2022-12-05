@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:intern_trip/view/start_screen/login_screen/login_screen.dart';
+import 'package:intern_trip/view/start_screen/sign_up_screen/sign_up_screen.dart';
 import 'package:lottie/lottie.dart';
 
-class LoginScreen extends StatelessWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+class StartScreen extends StatelessWidget {
+  const StartScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
         children: [
-          Center(child: Lottie.asset('assets/images/login_image.json')),
+          Center(child: Lottie.asset('assets/images/start_image.json')),
           Column(
             children: [
               const SizedBox(height: 100),
@@ -23,7 +25,14 @@ class LoginScreen extends StatelessWidget {
               SizedBox(
                 width: MediaQuery.of(context).size.width * 0.7,
                 child: ElevatedButton(
-                  onPressed: () => debugPrint("新規登録ボタン押された"),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => SignUpScreen(),
+                      ),
+                    );
+                  },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.redAccent,
                   ),
@@ -35,7 +44,14 @@ class LoginScreen extends StatelessWidget {
               SizedBox(
                 width: MediaQuery.of(context).size.width * 0.7,
                 child: ElevatedButton(
-                  onPressed: () => debugPrint("ログインボタン押された"),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => LoginScreen(),
+                      ),
+                    );
+                  },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.redAccent,
                   ),
@@ -43,7 +59,7 @@ class LoginScreen extends StatelessWidget {
                     child: Text('ログイン'),
                   ),
                 ),
-              )
+              ),
             ],
           ),
         ],

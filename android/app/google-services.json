@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "799665181957",
+    "project_id": "intern-trip",
+    "storage_bucket": "intern-trip.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:799665181957:android:ed6970b6b1bb9d10e4936c",
+        "android_client_info": {
+          "package_name": "com.example.intern_trip"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "799665181957-67llulsaha11u37rld37tqn9nubenqtj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCeInxua0FzT-nHleptIVyPGaqbN8HrQY0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "799665181957-67llulsaha11u37rld37tqn9nubenqtj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
