@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intern_trip/view/start_screen/login_screen/login_screen.dart';
 import 'package:intern_trip/view/start_screen/sign_up_screen/sign_up_screen.dart';
 import 'package:lottie/lottie.dart';
 
@@ -10,7 +11,7 @@ class StartScreen extends StatelessWidget {
     return Scaffold(
       body: Stack(
         children: [
-          Center(child: Lottie.asset('assets/images/login_image.json')),
+          Center(child: Lottie.asset('assets/images/start_image.json')),
           Column(
             children: [
               const SizedBox(height: 100),
@@ -43,7 +44,14 @@ class StartScreen extends StatelessWidget {
               SizedBox(
                 width: MediaQuery.of(context).size.width * 0.7,
                 child: ElevatedButton(
-                  onPressed: () => debugPrint("ログインボタン押された"),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => LoginScreen(),
+                      ),
+                    );
+                  },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.redAccent,
                   ),
