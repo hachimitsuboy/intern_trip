@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:intern_trip/auth/functions/lgin.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:intern_trip/auth/provider/input_user_provider.dart';
+import 'package:intern_trip/data_models/auth_user.dart';
 import 'package:intern_trip/view/common_widgets/common_button.dart';
 import 'package:intern_trip/view/start_screen/children/auth_text_form_field.dart';
 import 'package:lottie/lottie.dart';
 
-class LoginScreen extends StatelessWidget {
-  LoginScreen({Key? key}) : super(key: key);
-
+class LoginScreen extends ConsumerWidget {
   // buildメソッドで定義すると、入力内容が消える
   final TextEditingController _idController = TextEditingController();
   final TextEditingController _passController = TextEditingController();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -52,10 +52,10 @@ class LoginScreen extends StatelessWidget {
               const SizedBox(height: 50),
               CommonButton(
                 title: '送信',
-                onPush: () => login(
-                  _idController.text,
-                  _passController.text,
-                ),
+                onPush: () => {
+                  ref.read(inputUserProvider.notifier).state =
+                      AuthUser(id: _idController.text, pass: _passController.text)
+                },
               ),
             ],
           ),
