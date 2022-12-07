@@ -11,7 +11,7 @@ class DepartureDatePicker extends ConsumerWidget {
     return Container(
       decoration: const BoxDecoration(
           border: Border(bottom: BorderSide(color: Colors.black38))),
-      width: MediaQuery.of(context).size.width * 0.8,
+      width: MediaQuery.of(context).size.width * 0.85,
       child: Row(
         children: [
           const Icon(
@@ -20,13 +20,13 @@ class DepartureDatePicker extends ConsumerWidget {
           ),
           const Text(
             '出発日： ',
-            style: TextStyle(fontSize: 20),
+            style: TextStyle(fontSize: 16),
           ),
           TextButton(
             onPressed: () => _selectDate(context, ref),
             child: Text(
               departureDate,
-              style: const TextStyle(fontSize: 20),
+              style: const TextStyle(fontSize: 16),
             ),
           ),
         ],
