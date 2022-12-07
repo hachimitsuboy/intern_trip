@@ -18,7 +18,7 @@ class CommonButton extends StatelessWidget {
         child: ElevatedButton(
           onPressed: onPush,
           child: Center(
-            child: Text(title),
+            child: Text(title, style: const TextStyle(fontSize: 16),),
           ),
         ),
       ),

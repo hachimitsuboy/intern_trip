@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intern_trip/auth/provider/input_user_provider.dart';
 import 'package:intern_trip/data_models/auth_user.dart';
 import 'package:intern_trip/view/common_widgets/common_button.dart';
+import 'package:intern_trip/view/home_screen/home_screen.dart';
 import 'package:intern_trip/view/start_screen/children/auth_text_form_field.dart';
 import 'package:lottie/lottie.dart';
 
@@ -53,8 +54,9 @@ class LoginScreen extends ConsumerWidget {
               CommonButton(
                 title: '送信',
                 onPush: () => {
-                  ref.read(inputUserProvider.notifier).state =
-                      AuthUser(id: _idController.text, pass: _passController.text)
+                  // ref.read(inputUserProvider.notifier).state =
+                  //     AuthUser(id: _idController.text, pass: _passController.text);
+                  Navigator.push(context, MaterialPageRoute(builder: (_) => HomeScreen()))
                 },
               ),
             ],
