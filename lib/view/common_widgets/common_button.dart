@@ -17,9 +17,6 @@ class CommonButton extends StatelessWidget {
         width: MediaQuery.of(context).size.width * 0.7,
         child: ElevatedButton(
           onPressed: onPush,
-          style: ElevatedButton.styleFrom(
-            backgroundColor: Colors.redAccent,
-          ),
           child: Center(
             child: Text(title),
           ),

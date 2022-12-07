@@ -33,9 +33,6 @@ class StartScreen extends StatelessWidget {
                       ),
                     );
                   },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.redAccent,
-                  ),
                   child: const Center(
                     child: Text('新規登録'),
                   ),
@@ -52,9 +49,6 @@ class StartScreen extends StatelessWidget {
                       ),
                     );
                   },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.redAccent,
-                  ),
                   child: const Center(
                     child: Text('ログイン'),
                   ),
