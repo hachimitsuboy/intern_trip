@@ -11,7 +11,7 @@ class DepartureDatePicker extends ConsumerWidget {
     return Container(
       decoration: const BoxDecoration(
           border: Border(bottom: BorderSide(color: Colors.black38))),
-      width: MediaQuery.of(context).size.width * 0.85,
+      width: MediaQuery.of(context).size.width * 0.9,
       child: Row(
         children: [
           const Icon(

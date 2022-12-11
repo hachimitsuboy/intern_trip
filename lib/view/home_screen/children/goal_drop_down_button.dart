@@ -66,7 +66,7 @@ class GoalDropDownButton extends ConsumerWidget {
           ),
         ),
       ),
-      width: MediaQuery.of(context).size.width * 0.85,
+      width: MediaQuery.of(context).size.width * 0.9,
       child: Row(
         children: [
           const Icon(
@@ -77,6 +77,7 @@ class GoalDropDownButton extends ConsumerWidget {
           const Text('目的地：　', style: TextStyle(fontSize: 16)),
           const SizedBox(width: 5),
           DropdownButton(
+            icon: const SizedBox(),
             underline: const SizedBox(),
             value: dropdownValue,
             items: prefectures.map<DropdownMenuItem<String>>(

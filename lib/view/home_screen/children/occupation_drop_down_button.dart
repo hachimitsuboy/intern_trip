@@ -5,28 +5,28 @@ import 'package:intern_trip/auth/provider/occupation_provider.dart';
 final List<String> occupations = [
   '指定なし',
   '研究開発職',
-  '設計・開発職（メカ・\n部品等）',
-  '生産技術・工法開発・\n生産管理職',
+  '設計・開発職（メカ・部品等）',
+  '生産技術・工法開発・生産管理職',
   '品質管理・メンテナンス',
   'システムエンジニア',
-  '組み込み開発\nエンジニア',
+  '組み込み開発エンジニア',
   'AIエンジニア',
   'データサイエンティスト',
   'Webエンジニア',
-  'ネットワーク/\nインフラエンジニア',
+  'ネットワーク/インフラエンジニア',
   'セキュリティエンジニア',
   'システム運用・保守',
   '建築設計',
   'プラントエンジニア',
   '知的財産部門',
   'その他技術色',
-  '技術営業\n（セールスエンジニア）',
+  '技術営業（セールスエンジニア）',
   'ゲーム系エンジニア',
-  'Webプロデューサー・\nディレクター',
-  'Webデザイナー・\nUI/UXデザイナー',
+  'Webプロデューサー・ディレクター',
+  'Webデザイナー・UI/UXデザイナー',
   'コンサルタント',
   '金融専門職',
-  'マーケティング・\n商品企画',
+  'マーケティング・商品企画',
   '総合職',
   '企画・管理',
   '営業',
@@ -34,7 +34,7 @@ final List<String> occupations = [
   '看護師',
   '歯科医',
   '薬剤師',
-  '医療技師\n（臨床検査技師など）',
+  '医療技師（臨床検査技師など）',
   'その他',
 ];
 
@@ -47,13 +47,12 @@ class OccupationDropDownButton extends ConsumerWidget {
 
     return Container(
       decoration: const BoxDecoration(
-        border: Border(
-          bottom: BorderSide(
-            color: Colors.black38,
-          ),
-        )
-      ),
-      width: MediaQuery.of(context).size.width*0.85,
+          border: Border(
+        bottom: BorderSide(
+          color: Colors.black38,
+        ),
+      )),
+      width: MediaQuery.of(context).size.width * 0.9,
       child: Row(
         children: [
           const Icon(
@@ -64,15 +63,16 @@ class OccupationDropDownButton extends ConsumerWidget {
           const Text('職種：　', style: TextStyle(fontSize: 16)),
           const SizedBox(width: 5),
           DropdownButton(
+            icon: const SizedBox(),
             underline: const SizedBox(),
             value: occupationDropdownValue,
             items: occupations.map<DropdownMenuItem<String>>(
-                  (String value) {
+              (String value) {
                 return DropdownMenuItem<String>(
                   value: value,
                   child: Text(
                     value,
-                    style: const TextStyle(fontSize: 16),
+                    style: const TextStyle(fontSize: 14),
                     maxLines: 3,
                   ),
                 );
