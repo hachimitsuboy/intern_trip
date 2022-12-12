@@ -1,4 +1,4 @@
-class User {
+class AppUser {
   final String userId;
   final String displayName;
   final String inAppUserName;
@@ -10,7 +10,7 @@ class User {
 
 //<editor-fold desc="Data Methods">
 
-  const User({
+  const AppUser({
     required this.userId,
     required this.displayName,
     required this.inAppUserName,
@@ -24,7 +24,7 @@ class User {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      (other is User &&
+      (other is AppUser &&
           runtimeType == other.runtimeType &&
           userId == other.userId &&
           displayName == other.displayName &&
@@ -60,7 +60,7 @@ class User {
         '}';
   }
 
-  User copyWith({
+  AppUser copyWith({
     String? userId,
     String? displayName,
     String? inAppUserName,
@@ -70,7 +70,7 @@ class User {
     String? grade,
     String? age,
   }) {
-    return User(
+    return AppUser(
       userId: userId ?? this.userId,
       displayName: displayName ?? this.displayName,
       inAppUserName: inAppUserName ?? this.inAppUserName,
@@ -95,8 +95,8 @@ class User {
     };
   }
 
-  factory User.fromMap(Map<String, dynamic> map) {
-    return User(
+  factory AppUser.fromMap(Map<String, dynamic> map) {
+    return AppUser(
       userId: map['userId'] as String,
       displayName: map['displayName'] as String,
       inAppUserName: map['inAppUserName'] as String,
