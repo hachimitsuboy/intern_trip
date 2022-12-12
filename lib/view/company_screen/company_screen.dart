@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:intern_trip/auth/functions/register_intern.dart';
 import 'package:intern_trip/view/common_widgets/common_button.dart';
 import 'package:intern_trip/view/company_screen/children/company_industry_drop_down_button.dart';
 import 'package:intern_trip/view/company_screen/children/company_occupation_drop_down_button.dart';
@@ -104,7 +105,15 @@ class CompanyScreen extends ConsumerWidget {
               const SizedBox(height: 8),
               const SchedulePicker(),
               const SizedBox(height: 64),
-              CommonButton(title: 'イベントを登録', onPush: () {}),
+              CommonButton(
+                title: 'イベントを登録',
+                onPush: () => registerIntern(
+                  ref,
+                  companyController,
+                  eventNameController,
+                  eventContentController,
+                ),
+              ),
             ],
           ),
         ),
