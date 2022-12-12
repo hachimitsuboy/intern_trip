@@ -1,13 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:intern_trip/auth/provider/input_user_provider.dart';
-import 'package:intern_trip/data_models/auth_user.dart';
+import 'package:intern_trip/utils/constants.dart';
 import 'package:intern_trip/view/common_widgets/common_button.dart';
 import 'package:intern_trip/view/home_screen/home_screen.dart';
 import 'package:intern_trip/view/start_screen/children/auth_text_form_field.dart';
+import 'package:intern_trip/view/start_screen/sign_up_screen/sign_up_screen.dart';
 import 'package:lottie/lottie.dart';
 
 class LoginScreen extends ConsumerWidget {
+  final UserType userType;
+
+  LoginScreen({
+    super.key,
+    required this.userType,
+  });
+
   // buildメソッドで定義すると、入力内容が消える
   final TextEditingController _idController = TextEditingController();
   final TextEditingController _passController = TextEditingController();
@@ -56,9 +63,35 @@ class LoginScreen extends ConsumerWidget {
                 onPush: () => {
                   // ref.read(inputUserProvider.notifier).state =
                   //     AuthUser(id: _idController.text, pass: _passController.text);
-                  Navigator.push(context, MaterialPageRoute(builder: (_) => HomeScreen()))
+                  Navigator.push(
+                      context, MaterialPageRoute(builder: (_) => HomeScreen()))
                 },
               ),
+              Center(
+                child: SizedBox(
+                  width: MediaQuery.of(context).size.width * 0.7,
+                  child: (userType == UserType.company)
+                      ? ElevatedButton(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => SignUpScreen(
+                                  userType: UserType.company,
+                                ),
+                              ),
+                            );
+                          },
+                          child: const Center(
+                            child: Text(
+                              '新規登録はこちら',
+                              style: TextStyle(fontSize: 16),
+                            ),
+                          ),
+                        )
+                      : const SizedBox(),
+                ),
+              )
             ],
           ),
         ),

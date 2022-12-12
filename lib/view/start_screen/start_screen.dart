@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intern_trip/utils/constants.dart';
 import 'package:intern_trip/view/company_screen/company_screen.dart';
 import 'package:intern_trip/view/start_screen/login_screen/login_screen.dart';
 import 'package:intern_trip/view/start_screen/sign_up_screen/sign_up_screen.dart';
@@ -30,7 +31,7 @@ class StartScreen extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => SignUpScreen(),
+                        builder: (context) => SignUpScreen(userType: UserType.user,),
                       ),
                     );
                   },
@@ -46,7 +47,7 @@ class StartScreen extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (_) => LoginScreen(),
+                        builder: (_) => LoginScreen(userType: UserType.user,),
                       ),
                     );
                   },
@@ -62,7 +63,7 @@ class StartScreen extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (_) => CompanyScreen(),
+                        builder: (_) => LoginScreen(userType: UserType.company,),
                       ),
                     );
                   },
