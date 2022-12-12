@@ -7,8 +7,8 @@ class SchedulePicker extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final startDate = ref.watch(startDateProvider);
-    final endDate = ref.watch(endDateProvider);
+    final startDate = ref.watch(startDateToStringProvider);
+    final endDate = ref.watch(endDateToStringProvider);
     return Container(
       decoration: BoxDecoration(
         color: Colors.black12,
@@ -55,7 +55,7 @@ class SchedulePicker extends ConsumerWidget {
       lastDate: DateTime(2023),
     );
     if (selected != null) {
-      final startDate = '${selected.year}年${selected.month}月${selected.day}日';
+      final startDate = selected;
       ref.read(startDateProvider.notifier).state = startDate;
     }
   }
@@ -68,7 +68,7 @@ class SchedulePicker extends ConsumerWidget {
       lastDate: DateTime(2023),
     );
     if (selected != null) {
-      final endDate = '${selected.year}年${selected.month}月${selected.day}日';
+      final endDate = selected;
       ref.read(endDateProvider.notifier).state = endDate;
     }
   }
