@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:intern_trip/data_models/app_user.dart';
-import 'package:intern_trip/data_models/interm_date.dart';
+import 'package:intern_trip/data_models/intern_data.dart';
 import 'package:uuid/uuid.dart';
 
 class DatabaseManager {
