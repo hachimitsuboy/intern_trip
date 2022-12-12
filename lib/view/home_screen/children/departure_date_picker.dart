@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:intern_trip/auth/functions/select_date.dart';
 import 'package:intern_trip/auth/provider/departure_date_provider.dart';
 
 class DepartureDatePicker extends ConsumerWidget {
@@ -23,7 +24,7 @@ class DepartureDatePicker extends ConsumerWidget {
             style: TextStyle(fontSize: 16),
           ),
           TextButton(
-            onPressed: () => _selectDate(context, ref),
+            onPressed: () => selectTripDate(context, ref),
             child: Text(
               departureDate,
               style: const TextStyle(fontSize: 16),
@@ -32,19 +33,5 @@ class DepartureDatePicker extends ConsumerWidget {
         ],
       ),
     );
-  }
-
-  Future<void> _selectDate(BuildContext context, WidgetRef ref) async {
-    final DateTime? selected = await showDatePicker(
-      context: context,
-      initialDate: DateTime.now(),
-      firstDate: DateTime(2022),
-      lastDate: DateTime(2023),
-    );
-    if (selected != null) {
-      final departureDate =
-          '${selected.year}年${selected.month}月${selected.day}日';
-      ref.read(departureDateProvider.notifier).state = departureDate;
-    }
   }
 }
