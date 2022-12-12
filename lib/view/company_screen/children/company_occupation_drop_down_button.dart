@@ -38,51 +38,50 @@ final List<String> occupations = [
   'その他',
 ];
 
-class OccupationDropDownButton extends ConsumerWidget {
-  const OccupationDropDownButton({Key? key}) : super(key: key);
+class CompanyOccupationDropDownButton extends ConsumerWidget {
+  const CompanyOccupationDropDownButton({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     String occupationDropdownValue = ref.watch(occupationProvider);
 
     return Container(
-      decoration: const BoxDecoration(
-          border: Border(
-        bottom: BorderSide(
-          color: Colors.black38,
-        ),
-      )),
+      decoration: BoxDecoration(
+        color: Colors.black12,
+        borderRadius: BorderRadius.circular(10),
+      ),
       width: MediaQuery.of(context).size.width * 0.9,
-      child: Row(
-        children: [
-          const Icon(
-            Icons.work,
-            size: 40,
-          ),
-          const SizedBox(width: 5),
-          const Text('職種：　', style: TextStyle(fontSize: 16)),
-          const SizedBox(width: 5),
-          DropdownButton(
-            icon: const SizedBox(),
-            underline: const SizedBox(),
-            value: occupationDropdownValue,
-            items: occupations.map<DropdownMenuItem<String>>(
-              (String value) {
-                return DropdownMenuItem<String>(
-                  value: value,
-                  child: Text(
-                    value,
-                    style: const TextStyle(fontSize: 14),
-                    maxLines: 3,
-                  ),
-                );
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16.0),
+        child: Row(
+          children: [
+            const Icon(
+              Icons.work,
+              size: 40,
+            ),
+            const SizedBox(width: 5),
+            DropdownButton(
+              icon: const SizedBox(),
+              underline: const SizedBox(),
+              value: occupationDropdownValue,
+              items: occupations.map<DropdownMenuItem<String>>(
+                (String value) {
+                  return DropdownMenuItem<String>(
+                    value: value,
+                    child: Text(
+                      value,
+                      style: const TextStyle(fontSize: 16),
+                      maxLines: 3,
+                    ),
+                  );
+                },
+              ).toList(),
+              onChanged: (String? value) {
+                ref.read(occupationProvider.notifier).state = value!;
               },
-            ).toList(),
-            onChanged: (String? value) {
-              ref.read(occupationProvider.notifier).state = value!;
-            },
-          ),
-        ],
+            ),
+          ],
+        ),
       ),
     );
   }
