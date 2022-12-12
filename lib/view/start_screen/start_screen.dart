@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intern_trip/view/company_screen/company_screen.dart';
 import 'package:intern_trip/view/start_screen/login_screen/login_screen.dart';
 import 'package:intern_trip/view/start_screen/sign_up_screen/sign_up_screen.dart';
 import 'package:lottie/lottie.dart';
@@ -51,6 +52,22 @@ class StartScreen extends StatelessWidget {
                   },
                   child: const Center(
                     child: Text('ログイン'),
+                  ),
+                ),
+              ),
+              SizedBox(
+                width: MediaQuery.of(context).size.width * 0.7,
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => CompanyScreen(),
+                      ),
+                    );
+                  },
+                  child: const Center(
+                    child: Text('企業側ログイン'),
                   ),
                 ),
               ),
