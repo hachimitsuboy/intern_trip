@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:intern_trip/auth/provider/departure_date_provider.dart';
-import 'package:intern_trip/auth/provider/goal_provider.dart';
-import 'package:intern_trip/auth/provider/industry_provider.dart';
-import 'package:intern_trip/auth/provider/occupation_provider.dart';
 import 'package:intern_trip/models/database_manager.dart';
+import 'package:intern_trip/provider/departure_date_provider.dart';
+import 'package:intern_trip/provider/goal_provider.dart';
+import 'package:intern_trip/provider/industry_provider.dart';
+import 'package:intern_trip/provider/occupation_provider.dart';
 import 'package:intern_trip/view/common_widgets/common_button.dart';
 import 'package:intern_trip/view/home_screen/children/departure_date_picker.dart';
 import 'package:intern_trip/view/home_screen/children/goal_drop_down_button.dart';

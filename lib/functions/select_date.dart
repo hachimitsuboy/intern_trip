@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:intern_trip/auth/provider/departure_date_provider.dart';
-import 'package:intern_trip/auth/provider/schedule_provider.dart';
-
+import 'package:intern_trip/provider/departure_date_provider.dart';
+import 'package:intern_trip/provider/schedule_provider.dart';
 Future<void> selectTripDate(BuildContext context, WidgetRef ref) async {
   final DateTime? selected = await showDatePicker(
     context: context,

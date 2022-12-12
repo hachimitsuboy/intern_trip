@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:intern_trip/auth/provider/occupation_provider.dart';
+import 'package:intern_trip/provider/occupation_provider.dart';
 
 final List<String> occupations = [
   '指定なし',

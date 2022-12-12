@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:intern_trip/auth/provider/goal_provider.dart';
+import 'package:intern_trip/provider/goal_provider.dart';
 
 final List<String> prefectures = [
   '北海道',
