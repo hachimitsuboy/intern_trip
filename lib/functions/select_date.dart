@@ -11,8 +11,7 @@ Future<void> selectTripDate(BuildContext context, WidgetRef ref) async {
     lastDate: DateTime(2024),
   );
   if (selected != null) {
-    final departureDate = '${selected.year}年${selected.month}月${selected.day}日';
-    ref.read(departureDateProvider.notifier).state = departureDate;
+    ref.read(departureDateProvider.notifier).state = selected;
   }
 }
 
@@ -24,8 +23,7 @@ Future<void> selectStartDate(BuildContext context, WidgetRef ref) async {
     lastDate: DateTime(2024),
   );
   if (selected != null) {
-    final startDate = selected;
-    ref.read(startDateProvider.notifier).state = startDate;
+    ref.read(startDateProvider.notifier).state = selected;
   }
 }
 
@@ -37,7 +35,6 @@ Future<void> selectEndDate(BuildContext context, WidgetRef ref) async {
     lastDate: DateTime(2024),
   );
   if (selected != null) {
-    final endDate = selected;
-    ref.read(endDateProvider.notifier).state = endDate;
+    ref.read(endDateProvider.notifier).state = selected;
   }
 }
