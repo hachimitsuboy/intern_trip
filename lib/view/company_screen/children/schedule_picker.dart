@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:intern_trip/auth/functions/select_date.dart';
 import 'package:intern_trip/auth/provider/schedule_provider.dart';
+import 'package:intern_trip/functions/select_date.dart';
 
 class SchedulePicker extends ConsumerWidget {
   const SchedulePicker({Key? key}) : super(key: key);
