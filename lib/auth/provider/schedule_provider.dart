@@ -1,12 +1,14 @@
 import 'package:riverpod/riverpod.dart';
 
-final startDateProvider = StateProvider<String>((ref) {
-  final nowDate = DateTime.now();
-  return '${nowDate.year}年${nowDate.month}月${nowDate.day}日';
+final startDateProvider = StateProvider<DateTime>((ref) => DateTime.now());
+final endDateProvider = StateProvider<DateTime>((ref) => DateTime.now());
+
+final startDateToStringProvider = StateProvider<String>((ref) {
+  final startDate = ref.watch(startDateProvider);
+  return '${startDate.year}年${startDate.month}月${startDate.day}日';
 });
 
-
-final endDateProvider = StateProvider<String>((ref) {
-  final nowDate = DateTime.now();
-  return '${nowDate.year}年${nowDate.month}月${nowDate.day}日';
+final endDateToStringProvider = StateProvider<String>((ref) {
+  final endDate = ref.watch(endDateProvider);
+  return '${endDate.year}年${endDate.month}月${endDate.day}日';
 });
