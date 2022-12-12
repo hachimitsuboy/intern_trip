@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:intern_trip/auth/functions/select_date.dart';
 import 'package:intern_trip/auth/provider/schedule_provider.dart';
 
 class SchedulePicker extends ConsumerWidget {
@@ -24,7 +25,7 @@ class SchedulePicker extends ConsumerWidget {
               size: 40,
             ),
             TextButton(
-              onPressed: () => _selectStartDate(context, ref),
+              onPressed: () => selectStartDate(context, ref),
               child: Text(
                 startDate,
                 style: const TextStyle(fontSize: 14),
@@ -35,7 +36,7 @@ class SchedulePicker extends ConsumerWidget {
               style: TextStyle(fontSize: 14),
             ),
             TextButton(
-              onPressed: () => _selectEndDate(context, ref),
+              onPressed: () => selectEndDate(context, ref),
               child: Text(
                 endDate,
                 style: const TextStyle(fontSize: 14),
@@ -45,31 +46,5 @@ class SchedulePicker extends ConsumerWidget {
         ),
       ),
     );
-  }
-
-  Future<void> _selectStartDate(BuildContext context, WidgetRef ref) async {
-    final DateTime? selected = await showDatePicker(
-      context: context,
-      initialDate: DateTime.now(),
-      firstDate: DateTime(2022),
-      lastDate: DateTime(2023),
-    );
-    if (selected != null) {
-      final startDate = selected;
-      ref.read(startDateProvider.notifier).state = startDate;
-    }
-  }
-
-  Future<void> _selectEndDate(BuildContext context, WidgetRef ref) async {
-    final DateTime? selected = await showDatePicker(
-      context: context,
-      initialDate: DateTime.now(),
-      firstDate: DateTime(2022),
-      lastDate: DateTime(2023),
-    );
-    if (selected != null) {
-      final endDate = selected;
-      ref.read(endDateProvider.notifier).state = endDate;
-    }
   }
 }
