@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:intern_trip/auth/functions/select_date.dart';
 import 'package:intern_trip/auth/provider/departure_date_provider.dart';
+import 'package:intern_trip/functions/select_date.dart';
 
 class DepartureDatePicker extends ConsumerWidget {
   const DepartureDatePicker({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final departureDate = ref.watch(departureDateProvider);
+    final departureDate = ref.watch(departureDateToStringProvider);
     return Container(
       decoration: const BoxDecoration(
           border: Border(bottom: BorderSide(color: Colors.black38))),
