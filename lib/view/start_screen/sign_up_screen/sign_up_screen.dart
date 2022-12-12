@@ -1,18 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:intern_trip/auth/functions/create_account.dart';
+import 'package:intern_trip/models/database_manager.dart';
+import 'package:intern_trip/utils/constants.dart';
 import 'package:intern_trip/view/common_widgets/common_button.dart';
 import 'package:intern_trip/view/start_screen/children/auth_text_form_field.dart';
 import 'package:lottie/lottie.dart';
 
 class SignUpScreen extends StatelessWidget {
-  SignUpScreen({Key? key}) : super(key: key);
+  final UserType userType;
+
+  SignUpScreen({
+    super.key,
+    required this.userType,
+  });
+
   // buildメソッドで定義すると、入力内容が消える
+  final DatabaseManager _databaseManager = DatabaseManager();
   final TextEditingController _idController = TextEditingController();
   final TextEditingController _passController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -43,7 +50,6 @@ class SignUpScreen extends StatelessWidget {
                 title: 'メールアドレス',
                 controller: _idController,
               ),
-
               const SizedBox(height: 30),
               authTextFormField(
                 title: 'パスワード',
@@ -52,11 +58,15 @@ class SignUpScreen extends StatelessWidget {
               ),
               const SizedBox(height: 50),
               CommonButton(
-                  title: '登録',
-                  onPush: () => createAccount(
-                        _idController.text,
-                        _passController.text,
-                      )),
+                title: '登録',
+                onPush: () {
+                  // TODO ユーザータイプによってメソッドを切り替える
+                  _databaseManager.createAccount(
+                    _idController.text,
+                    _passController.text,
+                  );
+                },
+              ),
             ],
           ),
         ),
