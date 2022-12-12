@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:intern_trip/auth/provider/goal_provider.dart';
-import 'package:intern_trip/auth/provider/industry_provider.dart';
-import 'package:intern_trip/auth/provider/occupation_provider.dart';
-import 'package:intern_trip/auth/provider/schedule_provider.dart';
 import 'package:intern_trip/data_models/interm_date.dart';
 import 'package:intern_trip/models/database_manager.dart';
+import 'package:intern_trip/provider/goal_provider.dart';
+import 'package:intern_trip/provider/industry_provider.dart';
+import 'package:intern_trip/provider/occupation_provider.dart';
+import 'package:intern_trip/provider/schedule_provider.dart';
 
 void registerIntern(
   WidgetRef ref,

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:intern_trip/auth/functions/to_home_or_company_screen.dart';
+import 'package:intern_trip/functions/to_home_or_company_screen.dart';
 import 'package:intern_trip/models/database_manager.dart';
 import 'package:intern_trip/utils/constants.dart';
 import 'package:intern_trip/view/common_widgets/common_button.dart';

@@ -8,7 +8,7 @@ void toHomeOrCompanyScreen(UserType userType, BuildContext context) {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (_) => const HomeScreen(),
+        builder: (_) => HomeScreen(),
       ),
     );
   } else {

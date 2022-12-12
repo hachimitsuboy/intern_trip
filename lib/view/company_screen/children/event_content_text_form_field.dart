@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:intern_trip/auth/provider/text_count_provider.dart';
+import 'package:intern_trip/provider/text_count_provider.dart';
 
 class EventContentTextFormField extends ConsumerWidget {
   final TextEditingController textEditingController;

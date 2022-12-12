@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:intern_trip/data_models/app_user.dart';
 import 'package:intern_trip/data_models/interm_date.dart';
 import 'package:uuid/uuid.dart';
@@ -12,20 +13,93 @@ class DatabaseManager {
     await _db.collection("users").doc(user.userId).set(user.toMap());
   }
 
-  //取得
-  // Future<User> getUserInfoFromDbById(String userId) async {
-  //   final query =
-  //   await _db.collection("users").where("userId", isEqualTo: userId).get();
-  //   //わからん userIdを頼りにドキュメントを取ってきているのに、userIdが被ることとかあるのか？一つに定まるのでは？
-  //   //→一つに定まるが、docsはリスト形式のため0番目の要素に取得したいドキュメントが入る
-  //   return User.fromMap(query.docs[0].data());
-  // }
+  Future<List<Intern>> getInternInfo(
+    String goal,
+    DateTime departureDate,
+    String industry,
+    String occupation,
+  ) async {
+    List<Intern> allInternList = [];
+    List<Intern> resultInternList = [];
 
-  //投稿内容をFirestoreに登録しに行く
+    QuerySnapshot<Map<String, dynamic>> query =
+        await getQuery(industry, occupation, goal);
+
+    for (var element in query.docs) {
+      allInternList.add(Intern.fromMap(element.data()));
+    }
+
+    resultInternList = checkDate(allInternList, departureDate);
+
+    return resultInternList;
+  }
+
+  List<Intern> checkDate(List<Intern> allInternList, DateTime departureDate) {
+    final List<Intern> internList = [];
+    for (var intern in allInternList) {
+      final possibleDates = [
+        intern.startDate.add(const Duration(days: 1) * -1),
+        intern.startDate.add(const Duration(days: 2) * -1),
+        intern.startDate.add(const Duration(days: 3) * -1),
+        intern.endDate.add(const Duration(days: 1)),
+        intern.endDate.add(const Duration(days: 2)),
+        intern.endDate.add(const Duration(days: 3)),
+      ];
+      for (var possibleDate in possibleDates) {
+        if (departureDate == possibleDate) {
+          internList.add(intern);
+        }
+      }
+    }
+    return internList;
+  }
+
+  Future<QuerySnapshot<Map<String, dynamic>>> getQuery(
+    String industry,
+    String occupation,
+    String goal,
+  ) async {
+    QuerySnapshot<Map<String, dynamic>> query;
+
+    if (industry == '指定なし') {
+      if (occupation == '指定なし') {
+        // 業種・職種どちらも指定なし
+        query = await _db
+            .collection('intern')
+            .where('venue', isEqualTo: goal)
+            .get();
+      } else {
+        // 職種のみ指定
+        query = await _db
+            .collection('intern')
+            .where('venue', isEqualTo: goal)
+            .where('occupation', isEqualTo: occupation)
+            .get();
+      }
+    } else if (occupation == '指定なし') {
+      // 業種のみ指定
+      query = await _db
+          .collection('intern')
+          .where('venue', isEqualTo: goal)
+          .where('industry', isEqualTo: industry)
+          .get();
+    } else {
+      // 業種・職種どちらも指定
+      query = await _db
+          .collection('intern')
+          .where('venue', isEqualTo: goal)
+          .where('industry', isEqualTo: industry)
+          .where('occupation', isEqualTo: occupation)
+          .get();
+    }
+    return query;
+  }
+
+  //投稿内容をFirebaseに登録しに行く
   Future<void> insertIntern(Intern intern) async {
     // TODO 現在はとりあえず企業側のクラスを無視する
     final docId = const Uuid().v1();
-    await _db.collection("intern").doc(docId).set(intern.toMap());
+    await _db.collection('intern').doc(docId).set(intern.toMap());
   }
 
   Future<void> createAccount(String id, String pass) async {
@@ -36,26 +110,26 @@ class DatabaseManager {
         email: id,
         password: pass,
       );
-      print('登録完了');
+      debugPrint('登録完了');
     }
 
     /// アカウントに失敗した場合のエラー処理
     on FirebaseAuthException catch (e) {
       /// パスワードが弱い場合
       if (e.code == 'weak-password') {
-        print('パスワードが弱いです');
+        debugPrint('パスワードが弱いです');
 
         /// メールアドレスが既に使用中の場合
       } else if (e.code == 'email-already-in-use') {
-        print('すでに使用されているメールアドレスです');
+        debugPrint('すでに使用されているメールアドレスです');
       }
 
       /// その他エラー
       else {
-        print('アカウント作成エラー');
+        debugPrint('アカウント作成エラー');
       }
     } catch (e) {
-      print(e);
+      debugPrint('$e');
     }
   }
 
@@ -66,29 +140,25 @@ class DatabaseManager {
         email: id,
         password: pass,
       );
-      print('ログイン成功');
+      debugPrint('ログイン成功');
     }
-
-    /// サインインに失敗した場合のエラー処理
+    // サインインに失敗した場合のエラー処理
     on FirebaseAuthException catch (e) {
       /// メールアドレスが無効の場合
       if (e.code == 'invalid-email') {
-        print('メールアドレスが無効です');
+        debugPrint('メールアドレスが無効です');
       }
-
-      /// ユーザーが存在しない場合
+      // ユーザーが存在しない場合
       else if (e.code == 'user-not-found') {
-        print('ユーザーが存在しません');
+        debugPrint('ユーザーが存在しません');
       }
-
-      /// パスワードが間違っている場合
+      // パスワードが間違っている場合
       else if (e.code == 'wrong-password') {
-        print('パスワードが間違っています');
+        debugPrint('パスワードが間違っています');
       }
-
-      /// その他エラー
+      // その他エラー
       else {
-        print('サインインエラー');
+        debugPrint('サインインエラー');
       }
     }
   }

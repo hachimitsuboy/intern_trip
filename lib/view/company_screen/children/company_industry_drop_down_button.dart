@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:intern_trip/auth/provider/industry_provider.dart';
+import 'package:intern_trip/provider/industry_provider.dart';
 
 final List<String> industries = [
   '指定なし',
