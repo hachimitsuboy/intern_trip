@@ -38,5 +38,6 @@ void registerIntern(
     msg: 'インターン情報を登録しました',
     toastLength: Toast.LENGTH_LONG,
     backgroundColor: Colors.black45,
+    timeInSecForIosWeb: 2,
   );
 }

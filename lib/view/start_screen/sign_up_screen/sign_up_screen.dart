@@ -64,6 +64,8 @@ class SignUpScreen extends StatelessWidget {
                   _databaseManager.createAccount(
                     _idController.text,
                     _passController.text,
+                    context,
+                    userType,
                   );
                 },
               ),

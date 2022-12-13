@@ -17,17 +17,24 @@ class ResultScreen extends ConsumerWidget {
       body: Center(
         child: internList.when(
             data: (data) {
-              return ListView.builder(
-                  padding: const EdgeInsets.all(10),
-                  itemCount: data.length,
-                  itemBuilder: (
-                    BuildContext context,
-                    int index,
-                  ) {
-                    return InternCard(
-                      intern: data[index],
+              return (data.isNotEmpty)
+                  ? ListView.builder(
+                      padding: const EdgeInsets.all(10),
+                      itemCount: data.length,
+                      itemBuilder: (
+                        BuildContext context,
+                        int index,
+                      ) {
+                        return InternCard(
+                          intern: data[index],
+                        );
+                      })
+                  : const Center(
+                      child: Text(
+                        'ヒットなし',
+                        style: TextStyle(fontSize: 32),
+                      ),
                     );
-                  });
             },
             error: (err, _) => Text(err.toString()),
             loading: () => const CircularProgressIndicator()),
