@@ -63,9 +63,8 @@ class LoginScreen extends ConsumerWidget {
               CommonButton(
                 title: '送信',
                 onPush: () {
-                  _databaseManager.login(
-                      _idController.text, _passController.text);
-                  toHomeOrCompanyScreen(userType, context);
+                  _databaseManager.login(_idController.text,
+                      _passController.text, context, userType);
                 },
               ),
               Center(
